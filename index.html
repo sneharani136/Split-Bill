@@ -116,8 +116,14 @@
   resize();window.addEventListener('resize',resize);
   (function loop(now){gl.clearColor(0,0,0,1);gl.clear(gl.COLOR_BUFFER_BIT);gl.useProgram(prog);gl.uniform2f(prog.res,cv.width,cv.height);gl.uniform1f(prog.time,now*.001);gl.uniform3fv(prog.col,smokeColor);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);requestAnimationFrame(loop);})(0);
 </script>
-
-<script type="text/babel">
+<script>
+  Babel.registerPreset('react-classic', {
+    presets: [
+      [Babel.availablePresets['react'], { runtime: 'classic' }]
+    ]
+  });
+</script>
+<script type="text/babel" data-presets="react-classic">
   const { useState, useEffect } = React;
 
   // Modern SVG Icons
